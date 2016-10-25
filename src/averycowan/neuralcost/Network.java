@@ -30,6 +30,9 @@ public class Network {
         this.x = new float[layers.length + 1][];
         this.y = new float[outputs[0].length];
 
+        this.inputs = inputs;
+        this.outputs = outputs;
+
         //Create Bias Variables
         for (int i = 0; i < layers.length; i++) {
             b[i] = new float[layers[i]];
@@ -55,6 +58,17 @@ public class Network {
         crossEntropy = 0f;
         for (int i = 0; i < y_.length; i++) {
             crossEntropy -= y_[i] * Math.log(y[i]);
+        }
+    }
+
+    public void runTraining() {
+        for (int test = 0; test < inputs.length; test++) {
+            x_ = inputs[test];
+            y_ = outputs[test];
+            x[0] = x_;
+            // TODO: run();
+            calcX();
+            // TODO: backpropogate
         }
     }
 }
