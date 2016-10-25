@@ -51,4 +51,15 @@ public class Tensor {
         }
         return a;
     }
+
+    public static float sigmoid(float f) {
+        return (float) (1f / (1f + Math.exp(-f)));
+    }
+
+    public static float[] sigmoid(float[] f) {
+        for (int i = 0; i < f.length; i++) {
+            f[i] = (float) (1f / (1f + Math.exp(-f[i])));
+        }
+        return f;
+    }
 }
