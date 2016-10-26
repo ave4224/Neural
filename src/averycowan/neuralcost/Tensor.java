@@ -11,63 +11,63 @@ package averycowan.neuralcost;
  */
 public class Tensor {
 
-    public static float randfill(float[] f, float max) {
-        float sum = 0f;
+    public static double randfill(double[] f, double max) {
+        double sum = 0f;
         for (int i = 0; i < f.length; i++) {
-            sum += (f[i] = (float) Math.random() * max);
+            sum += (f[i] = (double) Math.random() * max);
         }
         return sum;
     }
 
-    public static float randfill(float[] f) {
-        float sum = 0f;
+    public static double randfill(double[] f) {
+        double sum = 0f;
         for (int i = 0; i < f.length; i++) {
-            sum += (f[i] = (float) Math.random());
+            sum += (f[i] = (double) Math.random());
         }
         return sum;
     }
 
-    public static float randfill(float[][] f, float max) {
-        float sum = 0f;
+    public static double randfill(double[][] f, double max) {
+        double sum = 0f;
         for (int i = 0; i < f.length; i++) {
             sum += randfill(f[i], max);
         }
         return sum;
     }
 
-    public static float randfill(float[][] f) {
-        float sum = 0f;
+    public static double randfill(double[][] f) {
+        double sum = 0f;
         for (int i = 0; i < f.length; i++) {
             sum += randfill(f[i]);
         }
         return sum;
     }
 
-    public static float randfill(float[][][] f, float max) {
-        float sum = 0f;
+    public static double randfill(double[][][] f, double max) {
+        double sum = 0f;
         for (int i = 0; i < f.length; i++) {
             sum += randfill(f[i], max);
         }
         return sum;
     }
 
-    public static float randfill(float[][][] f) {
-        float sum = 0f;
+    public static double randfill(double[][][] f) {
+        double sum = 0f;
         for (int i = 0; i < f.length; i++) {
             sum += randfill(f[i]);
         }
         return sum;
     }
 
-    public static float[] exp(float[] f) {
+    public static double[] exp(double[] f) {
         for (int i = 0; i < f.length; i++) {
-            f[i] = (float) Math.exp(f[i]);
+            f[i] = (double) Math.exp(f[i]);
         }
         return f;
     }
 
-    public static float[] normalize(float[] f) {
-        float sum = 0;
+    public static double[] normalize(double[] f) {
+        double sum = 0;
         for (int i = 0; i < f.length; i++) {
             sum += f[i];
         }
@@ -77,47 +77,47 @@ public class Tensor {
         return f;
     }
 
-    public static float[] scale(float[] a, float s) {
+    public static double[] scale(double[] a, double s) {
         for (int i = 0; i < a.length; i++) {
             a[i] *= s;
         }
         return a;
     }
 
-    public static float[][] scale(float[][] a, float s) {
+    public static double[][] scale(double[][] a, double s) {
         for (int i = 0; i < a.length; i++) {
             scale(a[i], s);
         }
         return a;
     }
 
-    public static float[][][] scale(float[][][] a, float s) {
+    public static double[][][] scale(double[][][] a, double s) {
         for (int i = 0; i < a.length; i++) {
             scale(a[i], s);
         }
         return a;
     }
 
-    public static float sigmoid(float f) {
-        return (float) (1f / (1f + Math.exp(-f)));
+    public static double sigmoid(double f) {
+        return (double) (1f / (1f + Math.exp(-f)));
     }
 
-    public static float[] sigmoid(float[] f) {
+    public static double[] sigmoid(double[] f) {
         for (int i = 0; i < f.length; i++) {
-            f[i] = (float) (1f / (1f + Math.exp(-f[i])));
+            f[i] = (double) (1f / (1f + Math.exp(-f[i])));
         }
         return f;
     }
 
-    public static float[] log(float[] f) {
+    public static double[] log(double[] f) {
         for (int i = 0; i < f.length; i++) {
-            f[i] = (float) Math.log(f[i]);
+            f[i] = (double) Math.log(f[i]);
         }
         return f;
     }
 
-    public static float dotProduct(float[] a, float[] b) {
-        float sum = 0;
+    public static double dotProduct(double[] a, double[] b) {
+        double sum = 0;
         for (int i = 0; i < a.length; i++) {
             sum += a[i] * b[i];
         }
