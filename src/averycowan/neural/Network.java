@@ -14,6 +14,8 @@ import java.util.Arrays;
  */
 public class Network {
 
+    public static final double LEARNING_RATE = 0.5;
+
     public double[][] x;
     public double[][] y;
     public double[] x_ = null;
@@ -26,8 +28,6 @@ public class Network {
 
     public double[][] inputs;
     public double[][] outputs;
-
-    public double LEARNING_RATE = 0.5;
 
     public Network(double[][] inputs, double[][] outputs, int[] layers) {
         this.b = new double[layers.length][];
@@ -77,6 +77,13 @@ public class Network {
         y[0] = x_;
         run();
         backwards();
+    }
+
+    public void runTestingStep(int step) {
+        x_ = inputs[step];
+        y_ = outputs[step];
+        y[0] = x_;
+        run();
     }
 
     public void run() {

@@ -20,18 +20,20 @@ public class Main {
     private static double[][] outputs = null;
 
     public static void main(String[] args) {
+        System.out.println("Generating Dataset");
         generateMNIST();
-        System.out.println("Generated Data");
+        System.out.println("Constructing Network");
         Network nn = new Network(inputs, outputs, widths);
-        System.out.println("Constructed");
+        System.out.println("Training");
         int i = 0;
-        while (i < 100000) {
-            nn.runTrainingStep((int) (Math.random() * 50000));
+        while (i < 59000) {
+            nn.runTrainingStep(i);
             i++;
         }
         int correct = 0;
         int wrong = 0;
-        i = 50000;
+        i = 59000;
+        System.out.println("Testing");
         while (i < nn.inputs.length) {
             nn.runTrainingStep(i);
             if (Tensor.greatest(nn.y_) == Tensor.greatest(nn.out)) {
@@ -63,7 +65,7 @@ public class Main {
     }
 
     public static void generateMNIST() {
-        widths = new int[]{200, 10};
+        widths = new int[]{500, 10};
         inputs = new double[MNIST.DATA.length][];
         for (int i = 0; i < inputs.length; i++) {
             inputs[i] = MNIST.DATA[i].clone();
