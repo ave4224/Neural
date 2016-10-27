@@ -25,7 +25,7 @@ public class Main {
         Network nn = new Network(inputs, outputs, widths);
         System.out.println("Constructed");
         int i = 0;
-        while (i < 50000) {
+        while (i < 59000) {
             nn.runTrainingStep(i);
             if (i % 10000 == 0) {
                 MNIST.print(i);
@@ -74,7 +74,7 @@ public class Main {
     }
 
     public static void generateMNIST() {
-        widths = new int[]{10, 10};
+        widths = new int[]{200, 10};
         inputs = new double[MNIST.DATA.length][];
         for (int i = 0; i < inputs.length; i++) {
             inputs[i] = MNIST.DATA[i].clone();

@@ -27,6 +27,8 @@ public class Network {
     public double[][] inputs;
     public double[][] outputs;
 
+    public double LEARNING_RATE = 0.5;
+
     public Network(double[][] inputs, double[][] outputs, int[] layers) {
         this.b = new double[layers.length][];
         this.w = new double[layers.length][][];
@@ -74,7 +76,7 @@ public class Network {
         y_ = outputs[step];
         y[0] = x_;
         run();
-        backwards(0.5f);
+        backwards();
     }
 
     public void run() {
@@ -89,7 +91,7 @@ public class Network {
         out = y[y.length - 1];
     }
 
-    public void backwards(double learningrate) {
+    public void backwards() {
         int layer = x.length - 1;
         double[][] δ = new double[layer + 1][];
         δ[layer] = new double[x[layer].length];
@@ -113,7 +115,7 @@ public class Network {
         for (layer = 0; layer < w.length; layer++) {
             for (int neuron = 0; neuron < w[layer].length; neuron++) {
                 for (int neuron_ = 0; neuron_ < w[layer][neuron].length; neuron_++) {
-                    double delta = learningrate;
+                    double delta = LEARNING_RATE;
                     delta *= y[layer][neuron_];
                     delta *= δ[layer][neuron];
                     w[layer][neuron][neuron_] -= delta;
