@@ -25,18 +25,13 @@ public class Main {
         Network nn = new Network(inputs, outputs, widths);
         System.out.println("Constructed");
         int i = 0;
-        while (i < 59000) {
-            nn.runTrainingStep(i);
-            if (i % 10000 == 0) {
-                MNIST.print(i);
-                print(nn.y_, false);
-                print(nn.out, false);
-                System.out.println();
-            }
+        while (i < 100000) {
+            nn.runTrainingStep((int) (Math.random() * 50000));
             i++;
         }
         int correct = 0;
         int wrong = 0;
+        i = 50000;
         while (i < nn.inputs.length) {
             nn.runTrainingStep(i);
             if (Tensor.greatest(nn.y_) == Tensor.greatest(nn.out)) {
@@ -44,15 +39,9 @@ public class Main {
             } else {
                 wrong++;
             }
-            if (i % 10000 == 0) {
-                MNIST.print(i);
-                print(nn.y_, false);
-                print(nn.out, false);
-                System.out.println();
-            }
             i++;
         }
-        System.out.println(correct + "/" + (correct + wrong));
+        System.out.println("Accuracy: " + unsig((correct * 100d) / (wrong + correct), false) + "%");
     }
 
     public static void generateSimple() {
