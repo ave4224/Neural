@@ -89,7 +89,7 @@ public class Network {
     public void run() {
         for (int layer = 0; layer < x.length; layer++) {
             for (int neuron = 0; neuron < x[layer].length; neuron++) {
-                x[layer][neuron] = Tensor.dotProduct(y[layer], w[layer][neuron]);// - b[layer][neuron];
+                x[layer][neuron] = Tensor.dotProduct(y[layer], w[layer][neuron]) + b[layer][neuron];
             }
             y[layer + 1] = x[layer].clone();
             Tensor.sigmoid(y[layer + 1]);

@@ -22,13 +22,13 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Generating Dataset");
         generateMNIST();
+        MNIST.print(0);
         System.out.println("Constructing Network");
         Network nn = new Network(inputs, outputs, widths);
         System.out.println("Training");
         int i = 0;
         while (i < 59000) {
-            nn.runTrainingStep(i);
-            i++;
+            nn.runTrainingStep(i++);
         }
         int correct = 0;
         int wrong = 0;
@@ -65,7 +65,7 @@ public class Main {
     }
 
     public static void generateMNIST() {
-        widths = new int[]{500, 10};
+        widths = new int[]{256, 10};
         inputs = new double[MNIST.DATA.length][];
         for (int i = 0; i < inputs.length; i++) {
             inputs[i] = MNIST.DATA[i].clone();
